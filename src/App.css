@@ -1,39 +1,30 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@import "@fontsource/poppins";
+nav{
+  height: 13%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  align-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  position: fixed;
+  top: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.main-bg{
+  height: 100vh;
+  width: 100%;
+  background-image: url("/public/Images/yacht.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 10%;
+  padding-left: 3%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-page-heading{
+  font-family: "Poppins";
+  font-size: 4rem;
+  color: #36ff54;
 }
