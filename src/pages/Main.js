@@ -1,11 +1,13 @@
-import Navbar from "../components/Navbar";
+import Navbar from "./Navbar";
 import Button from "react-bootstrap/Button";
+import Footer from "./Footer";
 
 const Main = () => {
     return (
-        <div className="main-bg">
+        <>
+            <div className="main-bg">
             <Navbar/>
-            <div className="h-100 w-100 d-flex justify-content-start align-items-start">
+            <div className="h-100 w-100 d-flex justify-content-start align-items-start px-5">
                 <div id="description" className="w-50 h-50 pt-5 d-flex flex-column justify-content-between">
                     <h2 className="main-page-heading">Elegance on Water</h2>
                     <h5 style={{color: "#800000"}}>
@@ -17,6 +19,9 @@ const Main = () => {
                 </div>
             </div>
         </div>
+    <Footer/>
+    </>
+
     )
 }
 
