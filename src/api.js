@@ -51,7 +51,33 @@ const ApiService = {
                 status: statusCode || "Unknown status"
             };
         }
+    },
+
+    async get(resource, params) {
+        resource = resource.startsWith("/")
+            ? resource.slice(1)
+            : resource;
+
+        try {
+            const response = await axios.get(resource, {params});
+            return {
+                message: "Success",
+                data: response.data,
+                status: response.status
+            };
+        } catch (error) {
+            console.error("Axios error:", error);
+
+            const statusCode = error.response?.status;
+            const errorMessage = error.response?.data?.detail || error.message;
+
+            return {
+                message: "Error",
+                error: errorMessage,
+                status: statusCode || "Unknown status"
+            };
+        }
     }
 }
 
-export default ApiService
+export default ApiService;
