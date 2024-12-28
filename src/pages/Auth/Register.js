@@ -1,22 +1,55 @@
+import {useState} from "react";
+import ApiService from "../../api.js";
+import {useNavigate} from "react-router-dom";
 const Register = () => {
+    ApiService.init();
+    const navigate = useNavigate();
+    const [form, setForm] = useState({
+        username: "",
+        email: "",
+        password: "",
+        admin: false
+    });
+    const handleChange = (e) => {
+        const errorMessage = document.getElementById("errorMessage");
+        if (!errorMessage.classList?.contains("invisible")){
+            errorMessage.classList.add("invisible");
+        }
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value });
+    };
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+
+
+        const response = await ApiService.post("/auth/register", form);
+        if (response.status === 200) return navigate("/login");
+        else{
+            const errorMessage = document.getElementById("errorMessage");
+            errorMessage.innerText = response.error;
+            errorMessage.classList.remove("invisible");
+        }
+    }
+
     return (
         <div className="vh-100 w-full d-flex justify-content-center align-items-center">
             <div className="w-25 h-50 rounded-5 border border-primary d-flex justify-content-center align-items-center">
-                <form className="w-100 h-100 d-flex  flex-column justify-content-around px-5 py-3 ">
+                <form className="w-100 h-100 d-flex  flex-column justify-content-around px-5 py-4" onSubmit={handleRegister}>
                     <div className="form-group">
                         <label>Username</label>
-                        <input type="text" className="form-control" id="username"
-                               placeholder="Enter username"/>
+                        <input required type="text" className="form-control" name="username"
+                               placeholder="Enter username" onChange={handleChange}/>
                     </div>
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="email" className="form-control" id="email"
-                               placeholder="Enter email"/>
+                        <input required type="email" className="form-control" name="email"
+                               placeholder="Enter email" onChange={handleChange}/>
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" id="password"
-                               placeholder="Password"/>
+                        <input required type="password" className="form-control" name="password"
+                               placeholder="Password" onChange={handleChange}/>
                     </div>
                     <div className="d-flex justify-content-between">
                         <div className="form-group form-check">
@@ -27,7 +60,10 @@ const Register = () => {
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                     <div className="text-center">
-                        <a href="/register" className="ml-auto px-2">Doesn't have account?</a>
+                        <a href="/login" className="ml-auto px-2">Already have account?</a>
+                    </div>
+                    <div className="m-0">
+                        <p id="errorMessage" className={"text-danger text-center invisible p-0 m-0"}>Error message</p>
                     </div>
                 </form>
             </div>
