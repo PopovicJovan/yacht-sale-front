@@ -9,6 +9,10 @@ const yachtCard = ({ yacht }) => {
             <Card.Text>
                 {yacht.description}
             </Card.Text>
+            <div className="d-flex w-100 justify-content-between align-items-center">
+                <Card.Subtitle className="text-danger pb-1">{yacht.status.name}</Card.Subtitle>
+                <Card.Subtitle className="text-info pb-1">price: {yacht.sale_price}€</Card.Subtitle>
+            </div>
             <Button variant="primary">Go to details</Button>
         </Card.Body>
     </Card>

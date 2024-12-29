@@ -12,9 +12,9 @@ const Navbar = () => {
                 <h1 className="text-white">Nautica</h1>
             </div>
             <div id="link-list" className="d-flex justify-content-around align-items-center w-50">
-                <a href="/public" className="text-decoration-none h3 text-white">Home</a>
-                <a href="/about" className="text-decoration-none h3 text-white">About</a>
-                <a href="/contact" className="text-decoration-none h3 text-white">Contact</a>
+                <a href="/" className="text-decoration-none h3 text-white">Home</a>
+                <a href="/#" className="text-decoration-none h3 text-white">About</a>
+                <a href="/#" className="text-decoration-none h3 text-white">Contact</a>
             </div>
             <div id="auth-buttons" className="d-flex align-items-center justify-content-center w-25">
                 {localStorage.getItem("auth_token") ?

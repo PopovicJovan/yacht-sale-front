@@ -5,6 +5,7 @@ import Login from "./pages/Auth/Login.js";
 import Register from "./pages/Auth/Register.js";
 import Main from "./pages/Main";
 import Profile from "./pages/Profile";
+import Yachts from "./pages/Yachts";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/me" element={<Profile />}/>
+          <Route path="/yachts" element={<Yachts />}/>
         </Routes>
       </Router>
   );
