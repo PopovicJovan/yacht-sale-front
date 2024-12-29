@@ -1,7 +1,7 @@
 import {Card} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
-const yachtCard = ({ yacht }) => {
+const yachtCard = ({ yacht, onButtonClick }) => {
     return (<Card style={{ width: '30%' }} className="my-2">
         <Card.Img variant="top" src={yacht.picture} />
         <Card.Body>
@@ -13,7 +13,7 @@ const yachtCard = ({ yacht }) => {
                 <Card.Subtitle className="text-danger pb-1">{yacht.status.name}</Card.Subtitle>
                 <Card.Subtitle className="text-info pb-1">price: {yacht.sale_price}€</Card.Subtitle>
             </div>
-            <Button variant="primary">Go to details</Button>
+            <Button variant="primary" onClick={onButtonClick}>Go to details</Button>
         </Card.Body>
     </Card>
     );
