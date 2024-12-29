@@ -82,7 +82,10 @@ const Yachts = () => {
                     <Spin size="large" />
                 </div>
             )}
-            {!loading && selectedYacht && (<YachtModal yacht={ yachts.find(yacht => yacht.id === selectedYacht)} onDivClick={() => setSelectedYacht(false)} />)}
+            {!loading && selectedYacht && (
+                <YachtModal yacht={ yachts.find(yacht => yacht.id === selectedYacht)}
+                            onDivClick={() => setSelectedYacht(false)} />
+            )}
             <div className="bg-dark w-100" style={{paddingTop: "13%"}}>
                 <div id="filters" className="filter-div px-5" style={{height: "15vh"}}>
                 <div className="d-flex justify-content-around align-items-center h-100 w-50 p-0 m-0">

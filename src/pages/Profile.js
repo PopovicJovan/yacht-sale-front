@@ -1,18 +1,21 @@
 import ApiService from "../api";
-import {useEffect, useState} from "react";
-import { Input } from "antd";
+import React, {useEffect, useState} from "react";
+import {Input, Spin} from "antd";
 import {useNavigate} from "react-router-dom";
 
 const Profile = () => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
     ApiService.init();
     ApiService.setHeader();
     const [me, setMe] = useState({});
     useEffect(() => {
         async function fetchData(){
+            setLoading(true);
             const response = await ApiService.get("/user/show");
             console.log(response.status);
             response.status === 200 ? setMe(response.data) : navigate(-1);
+            setLoading(false)
         }
         fetchData();
     }, []);
@@ -20,6 +23,14 @@ const Profile = () => {
 
     return (
     <div className="vh-100 w-100 d-flex flex-column justify-content-center align-items-center">
+        {loading && (
+            <div className="position-fixed top-0 start-0
+                w-100 h-100 d-flex justify-content-center
+                 align-items-center bg-light opacity-75 z-3"
+            >
+                <Spin size="large" />
+            </div>
+        )}
         <h1 className="text-primary text-center">Profile info</h1>
         <div className="w-50 h-75 rounded-5 border border-5
                         border-primary d-flex flex-column justify-content-center align-items-center">
