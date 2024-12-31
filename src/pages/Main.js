@@ -5,6 +5,7 @@ import ApiService from "../api";
 import YachtCard from "../components/YachtCard";
 import React, {useEffect, useState} from "react";
 import YachtModal from "../components/YachtModal";
+import {useLocation} from "react-router-dom";
 
 const Main = () => {
     ApiService.init();
@@ -47,7 +48,7 @@ const Main = () => {
                 <h2 className="text-center fw-bold py-2">Take a look on our yachts</h2>
                 <div className="d-flex flex-wrap justify-content-around">
                 {yachts.slice(0,6).map((yacht) => (
-                    <YachtCard key={yacht.id} yacht={yacht} onButtonClick={() => setSelectedYacht(yacht.id)}/>
+                    <YachtCard key={yacht.id} yacht={yacht} onCreateButtonClick={() => setSelectedYacht(yacht.id)}/>
                 ))}
                 </div>
             </div>

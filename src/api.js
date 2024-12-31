@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const API_BASE_URL = "http://api.fastapi.popovic.pro/";
+// export const API_BASE_URL = "http://127.0.0.1:8000/";
 
 export const logout = () => {
     localStorage.removeItem("auth_token");
@@ -34,6 +35,32 @@ const ApiService = {
 
         try {
             const response = await axios.post(resource, data, headers);
+            return {
+                message: "Success",
+                data: response.data,
+                status: response.status
+            };
+        } catch (error) {
+            console.error("Axios error:", error);
+
+            const statusCode = error.response?.status;
+            const errorMessage = error.response?.data?.detail || error.message;
+
+            return {
+                message: "Error",
+                error: errorMessage,
+                status: statusCode || "Unknown status"
+            };
+        }
+    },
+
+    async put(resource, data, headers) {
+        resource = resource.startsWith("/")
+            ? resource.slice(1)
+            : resource;
+
+        try {
+            const response = await axios.put(resource, data, headers);
             return {
                 message: "Success",
                 data: response.data,

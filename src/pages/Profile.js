@@ -2,7 +2,7 @@ import ApiService from "../api";
 import React, {useEffect, useState} from "react";
 import {Input, Spin} from "antd";
 import {useNavigate} from "react-router-dom";
-
+import Button from "react-bootstrap/Button";
 const Profile = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false)
@@ -13,7 +13,6 @@ const Profile = () => {
         async function fetchData(){
             setLoading(true);
             const response = await ApiService.get("/user/show");
-            console.log(response.status);
             response.status === 200 ? setMe(response.data) : navigate(-1);
             setLoading(false)
         }
@@ -33,9 +32,11 @@ const Profile = () => {
         )}
         <h1 className="text-primary text-center">Profile info</h1>
         <div className="w-50 h-75 rounded-5 border border-5
-                        border-primary d-flex flex-column justify-content-center align-items-center">
+                        border-primary d-flex flex-column justify-content-center align-items-center position-relative">
+            {me.admin && <Button className="position-absolute top-0 end-0 me-2 mt-1" href="/admin">Admin page</Button>}
+            <Button className="position-absolute top-0 start-0 ms-2 mt-1 px-3" onClick={() => navigate(-1)} >Back</Button>
             <div className="profile-container rounded-circle overflow-hidden border border-light" style={{width:"300px", height:"300px"}}>
-                <img src={me.picture} alt="Profilna Slika"
+                <img src={me.picture ?? "Images/no-user.jpg"} alt="Profilna Slika"
                      className="w-100 h-100 object-fit-cover"/>
             </div>
             <form className="w-75">

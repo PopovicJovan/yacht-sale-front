@@ -139,7 +139,7 @@ const Yachts = () => {
             </div>
             <div id="yachts" className="d-flex flex-wrap justify-content-around align-items-center">
                 {yachts.map((yacht) => (
-                    <YachtCard key={yacht.id} yacht={yacht} onButtonClick={() => setSelectedYacht(yacht.id)}/>
+                    <YachtCard key={yacht.id} yacht={yacht} onCreateButtonClick={() => setSelectedYacht(yacht.id)}/>
                 ))}
             </div>
             <div className="w-100 d-flex justify-content-center align-items-center h-25">
