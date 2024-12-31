@@ -8,9 +8,11 @@ import Footer from "../Footer";
 import YachtModal from "../../components/YachtModal";
 import Button from "react-bootstrap/Button";
 import CreateUpdateYachtModal from "../../components/CreateUpdateYachtModal";
+import {useNavigate} from "react-router-dom";
 
 const AdminYachtsPage = () => {
     ApiService.init();
+    const navigate = useNavigate();
     const [yachts, setYachts] = useState([]);
     const [models, setModels] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -99,13 +101,16 @@ const AdminYachtsPage = () => {
             {
                 selectedYachtForUpdate && (
                     <CreateUpdateYachtModal models={models}
-                                            onExit={() => setOpenModal(false)}
+                                            onExit={() => setSelectedYachtForUpdate(false)}
                                             yacht={yachts.find(yacht => yacht.id === selectedYachtForUpdate)} />
                 )
             }
             <div className="bg-dark w-100" style={{paddingTop: "13%"}}>
-                <div id="crud" className="py-3 px-3">
-                    <Button variant="info" size="lg" className="px-5 py-2" onClick={() => setOpenModal(true)}>Create new yacht</Button>
+                <div id="crud" className="py-3 px-3 w-50 d-flex justify-content-around align-items-center">
+                    <Button variant="info" size="lg" className="px-5 py-2"
+                            onClick={() => setOpenModal(true)}>
+                        Create new yacht
+                    </Button>
                 </div>
                 <div id="filters" className="filter-div px-5" style={{height: "15vh"}}>
                     <div className="d-flex justify-content-around align-items-center h-100 w-50 p-0 m-0">

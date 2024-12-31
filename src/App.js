@@ -23,7 +23,7 @@ function App() {
                     <AdminYachtsPage />
                 </AdminRoute>
           }/>
-            <Route path="/admin" element={<Navigate to="/admin/yachts" replace />} />
+          <Route path="/admin" element={<Navigate to="/admin/yachts" replace />} />
         </Routes>
       </Router>
   );

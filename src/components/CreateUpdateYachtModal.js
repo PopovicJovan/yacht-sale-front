@@ -1,4 +1,4 @@
-import {DatePicker, Dropdown, Input, InputNumber, message, Space, Upload} from "antd";
+import {DatePicker, Dropdown, Input, InputNumber,Space} from "antd";
 import React, {useEffect, useState} from "react";
 import TextArea from "antd/lib/input/TextArea";
 import dayjs from 'dayjs';
@@ -72,7 +72,7 @@ const CreateUpdateYachtModal = ({yacht, onExit, models=[]}) => {
             if(response.status === 403 || response.status === 401){
                 navigate("/");
             }
-            
+
         }
     }
 
@@ -146,17 +146,12 @@ const CreateUpdateYachtModal = ({yacht, onExit, models=[]}) => {
                                      className="ant-dropdown-menu">
                         Select status
                     </Dropdown.Button>
-                    <input type="file" accept="image/jpeg" onChange={handleFileChange}/>
-                    {/*<Upload*/}
-                    {/*    beforeUpload={(file) => beforeUpload(file)}*/}
-                    {/*    showUploadList={false}*/}
-                    {/*    accept="image/*"*/}
-                    {/*    onChange={handleFileChange}*/}
-                    {/*>*/}
-                    {/*    <Button style={{height: "40px"}} className="rounded bg-primary text-white px-4">*/}
-                    {/*        Select image*/}
-                    {/*    </Button>*/}
-                    {/*</Upload>*/}
+                    <div>
+                        <label htmlFor="file-upload" className="btn btn-primary">
+                            Choose File
+                        </label>
+                        <input id="file-upload" type="file" className="d-none" accept="image/jpeg" onChange={handleFileChange} />
+                    </div>
                 </Space>
                 {
                     yacht && (<Button size="lg" className="w-100 mt-3" type={"submit"}>UPDATE</Button>)
