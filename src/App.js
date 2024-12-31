@@ -8,6 +8,8 @@ import Profile from "./pages/Profile";
 import Yachts from "./pages/Yachts";
 import AdminYachtsPage from "./pages/Admin/AdminYachtsPage";
 import AdminRoute from "./pages/Admin/AdminRoute";
+import YachtModal from "./components/YachtModal";
+import CreateUpdateYachtModal from "./components/CreateUpdateYachtModal";
 
 function App() {
   return (
@@ -24,6 +26,17 @@ function App() {
                 </AdminRoute>
           }/>
           <Route path="/admin" element={<Navigate to="/admin/yachts" replace />} />
+          <Route path="/yachts/:id" element={<YachtModal/>} />
+          <Route path="/yachts/:id/update" element={
+              <AdminRoute>
+                  <CreateUpdateYachtModal/>
+              </AdminRoute>
+          } />
+            <Route path="/yachts/create" element={
+                <AdminRoute>
+                    <CreateUpdateYachtModal/>
+                </AdminRoute>
+            } />
         </Routes>
       </Router>
   );

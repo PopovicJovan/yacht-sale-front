@@ -5,14 +5,11 @@ import React, {useEffect, useState} from "react";
 import {Dropdown, Input, InputNumber, Pagination, Space, Spin} from "antd";
 import 'react-range-slider-input/dist/style.css';
 import Footer from "../Footer";
-import YachtModal from "../../components/YachtModal";
 import Button from "react-bootstrap/Button";
-import CreateUpdateYachtModal from "../../components/CreateUpdateYachtModal";
 import {useNavigate} from "react-router-dom";
 
 const AdminYachtsPage = () => {
     ApiService.init();
-    const navigate = useNavigate();
     const [yachts, setYachts] = useState([]);
     const [models, setModels] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -27,9 +24,7 @@ const AdminYachtsPage = () => {
         maxPrice: 0,
         page: 1
     });
-    const [selectedYacht, setSelectedYacht] = useState(false)
-    const [selectedYachtForUpdate, setSelectedYachtForUpdate] = useState(false)
-    const [openModal, setOpenModal] = useState(false)
+    const navigate = useNavigate();
     useEffect(() => {
         try{
             const arrowBox = document.getElementsByClassName("ant-pagination-item-link");
@@ -88,27 +83,10 @@ const AdminYachtsPage = () => {
                     <Spin size="large" />
                 </div>
             )}
-            {!loading && selectedYacht && (
-                <YachtModal yacht={ yachts.find(yacht => yacht.id === selectedYacht)}
-                            onDivClick={() => setSelectedYacht(false)}/>
-            )}
-            {
-                openModal && (
-                    <CreateUpdateYachtModal models={models} onExit={() => setOpenModal(false)}/>
-                )
-            }
-
-            {
-                selectedYachtForUpdate && (
-                    <CreateUpdateYachtModal models={models}
-                                            onExit={() => setSelectedYachtForUpdate(false)}
-                                            yacht={yachts.find(yacht => yacht.id === selectedYachtForUpdate)} />
-                )
-            }
             <div className="bg-dark w-100" style={{paddingTop: "13%"}}>
                 <div id="crud" className="py-3 px-3 w-50 d-flex justify-content-around align-items-center">
                     <Button variant="info" size="lg" className="px-5 py-2"
-                            onClick={() => setOpenModal(true)}>
+                            onClick={() => navigate("/yachts/create")}>
                         Create new yacht
                     </Button>
                 </div>
@@ -164,10 +142,7 @@ const AdminYachtsPage = () => {
                 </div>
                 <div id="yachts" className="d-flex flex-wrap justify-content-around align-items-center">
                     {yachts.map((yacht) => (
-                        <YachtCard key={yacht.id} yacht={yacht}
-                                   onCreateButtonClick={() => setSelectedYacht(yacht.id)}
-                                   onUpdateButtonClick={() => setSelectedYachtForUpdate(yacht.id)}
-                                   showUpdate={true}/>
+                        <YachtCard key={yacht.id} yacht={yacht} showUpdate={true}/>
                     ))}
                 </div>
                 <div className="w-100 d-flex justify-content-center align-items-center h-25">

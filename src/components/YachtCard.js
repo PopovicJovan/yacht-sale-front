@@ -1,8 +1,10 @@
 import {Card} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import {useNavigate} from "react-router-dom";
 
-const yachtCard = ({ yacht, onCreateButtonClick, onUpdateButtonClick, showUpdate=false }) => {
-    const show = ["available for sale", "available for rent and sale"].includes(yacht.status.name)
+const YachtCard = ({yacht, showUpdate=false}) => {
+    const show = ["available for sale", "available for rent and sale"].includes(yacht.status.name);
+    const navigate = useNavigate();
     return (
         <Card style={{ width: '30%'}} className="my-2">
             <Card.Img variant="top" src={yacht.picture ?? "/Images/no-img.jpg"} style={{height: "40vh"}} className="img-fluid"/>
@@ -22,9 +24,9 @@ const yachtCard = ({ yacht, onCreateButtonClick, onUpdateButtonClick, showUpdate
                     }
                 </div>
                 <div className="d-flex">
-                    <Button variant="primary" onClick={onCreateButtonClick}>Go to details</Button>
+                    <Button variant="primary" onClick={() => navigate(`/yachts/${yacht.id}`)}>Go to details</Button>
                     {showUpdate && (
-                        <Button variant="success" onClick={onUpdateButtonClick} className="ms-2">Update yacht</Button>
+                        <Button variant="success" onClick={() => navigate(`/yachts/${yacht.id}/update`)} className="ms-2">Update yacht</Button>
                     )}
                 </div>
             </Card.Body>
@@ -32,4 +34,4 @@ const yachtCard = ({ yacht, onCreateButtonClick, onUpdateButtonClick, showUpdate
     );
 }
 
-export default yachtCard;
+export default YachtCard;

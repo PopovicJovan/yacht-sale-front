@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const API_BASE_URL = "http://api.fastapi.popovic.pro/";
-// export const API_BASE_URL = "http://127.0.0.1:8000/";
+// export const API_BASE_URL = "http://api.fastapi.popovic.pro/";
+export const API_BASE_URL = "http://127.0.0.1:8000/";
 
 export const logout = () => {
     localStorage.removeItem("auth_token");
