@@ -12,7 +12,7 @@ const Main = () => {
         const getYachts = async () =>{
             const response = await ApiService.get("/yacht");
             if (response.status === 200) {
-                setYachts(response.data)
+                setYachts(response.data.yachts)
             }
             else{
                 return alert(response.error);
