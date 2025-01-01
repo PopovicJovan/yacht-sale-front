@@ -40,7 +40,7 @@ const Profile = () => {
                         onClick={() => navigate(-1)}>Back</Button>
                 <div className="profile-container rounded-circle overflow-hidden border border-light"
                      style={{width: "300px", height: "300px"}}>
-                    <img src={me.picture ?? "Images/no-user.jpg"} alt="Profilna Slika"
+                    <img src={me.picture ?? "/Images/no-user.jpg"} alt="Profilna Slika"
                          className="w-100 h-100 object-fit-cover"/>
                 </div>
                 <form className="w-75">

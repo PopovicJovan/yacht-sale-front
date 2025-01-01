@@ -10,6 +10,9 @@ import AdminYachtsPage from "./pages/Admin/AdminYachtsPage";
 import AdminRoute from "./pages/Admin/AdminRoute";
 import YachtModal from "./components/YachtModal";
 import CreateUpdateYachtModal from "./components/CreateUpdateYachtModal";
+import AdminUsersPage from "./pages/Admin/AdminUsersPage";
+import AdminSingleUserPage from "./pages/Admin/AdminSingleUserPage";
+import ContactForm from "./pages/ContactForm";
 
 function App() {
   return (
@@ -32,11 +35,22 @@ function App() {
                   <CreateUpdateYachtModal/>
               </AdminRoute>
           } />
-            <Route path="/yachts/create" element={
+         <Route path="/yachts/create" element={
+            <AdminRoute>
+                <CreateUpdateYachtModal/>
+            </AdminRoute>
+         } />
+         <Route path="/admin/users" element={
                 <AdminRoute>
-                    <CreateUpdateYachtModal/>
+                    <AdminUsersPage/>
                 </AdminRoute>
-            } />
+         } />
+        <Route path="/admin/users/:id" element={
+            <AdminRoute>
+                <AdminSingleUserPage/>
+            </AdminRoute>
+        } />
+        <Route path="/contact" element={<ContactForm/>}/>
         </Routes>
       </Router>
   );

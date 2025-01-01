@@ -52,7 +52,8 @@ const Yachts = () => {
                 </div>
             )}
             <div className="bg-dark w-100" style={{paddingTop: "13%"}}>
-                <FilterDiv setYachts={setYachts} setTotalPages={setTotalPages} setLoading={setLoading}/>
+                <FilterDiv setYachts={setYachts} setTotalPages={setTotalPages}
+                           setLoading={setLoading} filters={filters} setFilter={setFilter}/>
             <div id="yachts" className="d-flex flex-wrap justify-content-around align-items-center">
                 {yachts.map((yacht) => (
                     <YachtCard yacht={yacht}/>

@@ -61,8 +61,13 @@ const AdminYachtsPage = () => {
                             onClick={() => navigate("/yachts/create")}>
                         Create new yacht
                     </Button>
+                    <Button variant="info" size="lg" className="px-5 py-2"
+                            onClick={() => navigate("/admin/users")}>
+                        See all users
+                    </Button>
                 </div>
-                <FilterDiv setYachts={setYachts} setTotalPages={setTotalPages} setLoading={setLoading}/>
+                <FilterDiv setYachts={setYachts} setTotalPages={setTotalPages}
+                           setLoading={setLoading} filters={filters} setFilter={setFilter}/>
                 <div id="yachts" className="d-flex flex-wrap justify-content-around align-items-center">
                     {yachts.map((yacht) => (
                         <YachtCard key={yacht.id} yacht={yacht} showUpdate={true}/>

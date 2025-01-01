@@ -4,26 +4,10 @@ import React, {useEffect, useState} from "react";
 import ApiService from "../api";
 import {useNavigate} from "react-router-dom";
 
-const FilterDiv = ({setYachts, setTotalPages, setLoading}) => {
+const FilterDiv = ({setYachts, setTotalPages, setLoading, filters, setFilter}) => {
     const [models, setModels] = useState([]);
     const navigate = useNavigate();
-    const [filters, setFilters] = useState({
-        name: "",
-        model_id: "",
-        minLength: 0,
-        maxLength: 0,
-        minWidth: 0,
-        maxWidth: 0,
-        minPrice: 0,
-        maxPrice: 0,
-        page: 1
-    });
-    const setFilter = (key, value) => {
-        setFilters(filters => ({
-            ...filters,
-            [key]: value
-        }));
-    };
+    ApiService.init();
     const fetchData = async () => {
         setLoading(true)
         const yachtResponse = await ApiService.get("/yacht", {...filters});

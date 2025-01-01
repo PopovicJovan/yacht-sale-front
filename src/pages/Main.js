@@ -38,7 +38,7 @@ const Main = () => {
             </div>
             </div>
             <div id="offer" className="pb-3">
-                <h2 className="text-center fw-bold py-2">Take a look on our yachts</h2>
+                <h2 className="text-center fw-bold py-2">The best of the offer</h2>
                 <div className="d-flex flex-wrap justify-content-around">
                 {yachts.slice(0,6).map((yacht) => (
                     <YachtCard key={yacht.id} yacht={yacht}/>
