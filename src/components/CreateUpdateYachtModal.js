@@ -120,39 +120,42 @@ const CreateUpdateYachtModal = () => {
             <form onSubmit={handleSubmitForm}>
                 <Button className="position-absolute top-0 end-0 me-2 mt-1" onClick={() => navigate(-1)}>Close page</Button>
                 <div className="form-group">
-                    <label className="text-white">Name:</label>
+                    <label>Name:</label>
                     <Input type="text" className="form-control" value={yachtData?.name} onChange={handleInputChange}
                            name="name"/>
                 </div>
                 <Space direction="horizontal" className="d-flex align-items-center justify-content-around">
                     <div className="d-flex flex-column">
-                        <label className="text-white">Rent price:</label>
+                        <label>Rent price:</label>
                         <InputNumber addonBefore="+" addonAfter="€" value={yachtData?.rent_price ?? 0}
                                      color="white" step={10000} name="rent_price"
                                      onChange={(value) => setData("rent_price", value)}/>
                     </div>
                     <div className="d-flex flex-column">
-                        <label className="text-white">Sale price:</label>
+                        <label>Sale price:</label>
                         <InputNumber addonBefore="+" addonAfter="€" value={yachtData?.sale_price ?? 0}
                                      color="white" step={100} name="sale_price"
                                      onChange={(value) => setData("sale_price", value)}/>
                     </div>
                 </Space>
                 <div className="form-group">
-                    <label className="text-white">Description</label>
+                    <label>Description</label>
                     <TextArea type="text" className="form-control" value={yachtData?.description}
                               onChange={handleInputChange} name="description"/>
                 </div>
-                <Space direction="horizontal" className="w-100 d-flex justify-content-around mt-2">
+                <Space direction="horizontal" className="w-100 d-flex justify-content-around">
                     <DatePicker value={yachtData?.year ? dayjs(yachtData.year) : dayjs()} size="large"
                                 onChange={(date, dateString) => {
                                     setData("year", dateString)
                                 }}
                                 disabledDate={disabledDate} name="year"/>
-                    <Dropdown.Button menu={modelsMenu} size="large" onClick={handleModelClick} name="model_id"
-                                     className="ant-dropdown-menu">
-                        Select model
-                    </Dropdown.Button>
+                    <div className="mt-4">
+                        <Dropdown.Button menu={modelsMenu} size="large" onClick={handleModelClick} name="model_id"
+                                         className="ant-dropdown-menu">
+                            Select model
+                        </Dropdown.Button>
+                        <p className="text-center p-0 m-0"><a href="/model/create">new model?</a></p>
+                    </div>
                     <Dropdown.Button menu={statusesMenu} size="large" onClick={handleStatusClick} name="status_id"
                                      className="ant-dropdown-menu">
                         Select status

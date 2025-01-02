@@ -13,6 +13,7 @@ import CreateUpdateYachtModal from "./components/CreateUpdateYachtModal";
 import AdminUsersPage from "./pages/Admin/AdminUsersPage";
 import AdminSingleUserPage from "./pages/Admin/AdminSingleUserPage";
 import ContactForm from "./pages/ContactForm";
+import CreateModel from "./pages/Admin/CreateModel";
 
 function App() {
   return (
@@ -51,6 +52,11 @@ function App() {
             </AdminRoute>
         } />
         <Route path="/contact" element={<ContactForm/>}/>
+            <Route path="/model/create" element={
+                <AdminRoute>
+                    <CreateModel/>
+                </AdminRoute>
+            } />
         </Routes>
       </Router>
   );
