@@ -1,10 +1,10 @@
-import {Dropdown, Input, InputNumber, Space} from "antd";
+import {DatePicker, Dropdown, Input, InputNumber, Space} from "antd";
 import Button from "react-bootstrap/Button";
 import React, {useEffect, useState} from "react";
 import ApiService from "../api";
 import {useNavigate} from "react-router-dom";
 
-const FilterDiv = ({setYachts, setTotalPages, setLoading, filters, setFilter}) => {
+const FilterDiv = ({setYachts, setTotalPages, setLoading, filters, setFilter, admin=false}) => {
     const [models, setModels] = useState([]);
     const navigate = useNavigate();
     ApiService.init();
@@ -38,14 +38,55 @@ const FilterDiv = ({setYachts, setTotalPages, setLoading, filters, setFilter}) =
         setFilter(name, value)
     }
 
+    const sorts = [
+        {label: 'price asc', key: 'price_asc'},
+        {label: 'price desc', key: 'price_desc'},
+        {label: 'available for rent', key: 'available_for_rent'},
+        {label: 'available for sale', key: 'available_for_sale'}
+    ];
+    const handleSortClick = (e) => setFilter("sort_by", e.key);
+    const sortProps = {
+        items: sorts.map(item => ({label: item.label, key: item.key})),
+        onClick: handleSortClick,
+    };
+
+    const { RangePicker } = DatePicker;
     return (
         <div className="d-flex flex-column justify-content-center align-items-center">
-            <div id="filters" className="filter-div px-5" style={{height: "15vh"}}>
+            <div>
+                <Space size={12}>
+                    {admin && (
+                        <Button variant="info" size="lg" className="px-5 py-2"
+                                onClick={() => navigate("/yachts/create")}>
+                            Create new yacht
+                        </Button>
+                    )}
+                    <div className="d-flex flex-column justify-content-center mb-4">
+                        <p className="text-white text-center p-0 m-0">Choose rent date</p>
+                        <RangePicker size="large"
+                                     onChange={(_, info) => {
+                                         setFilter("startDate", info[0]);
+                                         setFilter("endDate", info[1]);
+                                     }}/>
+                    </div>
+                    <Dropdown.Button menu={sortProps} size="large" onClick={handleSortClick}
+                                     name="sort_by">
+                        Sort by
+                    </Dropdown.Button>
+                    {admin && (
+                        <Button variant="info" size="lg" className="px-5 py-2"
+                                onClick={() => navigate("/admin/users")}>
+                            See all users
+                        </Button>
+                    )}
+                </Space>
+            </div>
+            <div id="filters" className="filter-div px-5">
                 <div className="d-flex justify-content-around align-items-center h-100 w-50 p-0 m-0">
                     <div className="form-group h-75 w-50 d-flex justify-content-center align-items-center">
                         <Input
                             placeholder="Search by name"
-                            className="h-50"
+                            size="large"
                             name="name"
                             onChange={handleChange}
                         />

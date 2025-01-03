@@ -37,7 +37,7 @@ const AdminSingleUserPage = () => {
 
     const banUser = async () => {
         const response = await ApiService.delete(`/user/${id}`);
-        if (response.status === 204) navigate(-1);
+        if (response.status === 204) navigate(0);
         if (response.status === 403) alert(response.error);
         else{
             navigate("/");
@@ -115,7 +115,7 @@ const AdminSingleUserPage = () => {
                 <p className="text-center h1">Your rents</p>
                 <div className="d-flex flex-wrap justify-content-around align-items-center">
                     {user.rents.map((rent) => (
-                        <YachtCard key={rent.yacht.id} yacht={rent.yacht} />
+                        <YachtCard key={rent.yacht.id} yacht={rent.yacht} showCancel={true} rentId={rent.id}  />
                     ))}
                 </div>
             </div>

@@ -18,12 +18,15 @@ const AdminYachtsPage = () => {
         name: "",
         model_id: "",
         minLength: 0,
-        maxLength: 0,
+        maxLength: null,
         minWidth: 0,
-        maxWidth: 0,
+        maxWidth: null,
         minPrice: 0,
-        maxPrice: 0,
-        page: 1
+        maxPrice: null,
+        page: 1,
+        sort_by: undefined,
+        startDate: undefined,
+        endDate: undefined
     });
     const navigate = useNavigate();
     useEffect(() => {
@@ -56,21 +59,13 @@ const AdminYachtsPage = () => {
                 </div>
             )}
             <div className="bg-dark w-100" style={{paddingTop: "13%"}}>
-                <div id="crud" className="py-3 px-3 w-50 d-flex justify-content-around align-items-center">
-                    <Button variant="info" size="lg" className="px-5 py-2"
-                            onClick={() => navigate("/yachts/create")}>
-                        Create new yacht
-                    </Button>
-                    <Button variant="info" size="lg" className="px-5 py-2"
-                            onClick={() => navigate("/admin/users")}>
-                        See all users
-                    </Button>
-                </div>
                 <FilterDiv setYachts={setYachts} setTotalPages={setTotalPages}
-                           setLoading={setLoading} filters={filters} setFilter={setFilter}/>
+                           setLoading={setLoading} filters={filters} setFilter={setFilter} admin={true}/>
                 <div id="yachts" className="d-flex flex-wrap justify-content-around align-items-center">
                     {yachts.map((yacht) => (
-                        <YachtCard key={yacht.id} yacht={yacht} showUpdate={true}/>
+                        <YachtCard key={yacht.id} yacht={yacht} showUpdate={true}
+                                   startDateOptional={filters.startDate}
+                                   endDateOptional={filters.endDate}/>
                     ))}
                 </div>
                 <div className="w-100 d-flex justify-content-center align-items-center h-25">

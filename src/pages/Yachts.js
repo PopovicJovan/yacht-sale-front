@@ -21,7 +21,10 @@ const Yachts = () => {
         maxWidth: null,
         minPrice: 0,
         maxPrice: null,
-        page: 1
+        page: 1,
+        sort_by: undefined,
+        startDate: undefined,
+        endDate: undefined
     });
 
     useEffect(() => {
@@ -37,6 +40,7 @@ const Yachts = () => {
             ...filters,
             [key]: value
         }));
+
     };
 
 
@@ -56,7 +60,7 @@ const Yachts = () => {
                            setLoading={setLoading} filters={filters} setFilter={setFilter}/>
             <div id="yachts" className="d-flex flex-wrap justify-content-around align-items-center">
                 {yachts.map((yacht) => (
-                    <YachtCard yacht={yacht}/>
+                    <YachtCard yacht={yacht} startDateOptional={filters.startDate} endDateOptional={filters.endDate}/>
                 ))}
             </div>
             <div className="w-100 d-flex justify-content-center align-items-center h-25">
