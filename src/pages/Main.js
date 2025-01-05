@@ -26,9 +26,9 @@ const Main = () => {
             <Navbar/>
             <div className="main-bg">
                 <div className="h-100 w-100 d-flex justify-content-flex align-items-start px-5">
-                <div id="description" className="w-50 h-50 pt-5 d-flex flex-column justify-content-between">
+                <div id="description" className="w-50 h-50 pt-5 d-flex flex-column justify-content-center">
                     <h2 className="main-page-heading">Elegance on Water</h2>
-                    <h5 style={{color: "#800000"}}>
+                    <h5 style={{color: "#800000", width: "80%"}}>
                         Embark on a journey like no other with our exclusive fleet of yachts.
                         Each vessel is designed to offer unparalleled comfort and sophistication.
                         Discover the freedom of luxury on the open water.

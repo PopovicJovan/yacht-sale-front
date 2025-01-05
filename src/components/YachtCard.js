@@ -62,6 +62,9 @@ const YachtCard = ({ yacht, showUpdate = false, showCancel = false, startDateOpt
 
 
     const buyYacht = async (id) => {
+        if (!localStorage.getItem("auth_token")){
+            return navigate("/login");
+        }
         MyAlert("buy").then(async (result) => {
             if (result.isConfirmed) {
                 const response = await ApiService.post(`/yacht/${id}/buy`);
@@ -77,6 +80,9 @@ const YachtCard = ({ yacht, showUpdate = false, showCancel = false, startDateOpt
     };
 
     const rentYacht = async (id) => {
+        if (!localStorage.getItem("auth_token")){
+            navigate("/login");
+        }
         await fetchBookedDates();
         if (startDate && endDate && id) {
             MyAlert("rent").then(async (result) => {

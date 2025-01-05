@@ -26,9 +26,9 @@ const AdminUsersPage = () => {
     return (
         <>
             <Navbar myClass="bg-dark"/>
-            <div className="bg-dark w-100 vh-100 d-flex flex-column justify-content-center align-items-center overflow-y-scroll"
-                 style={{paddingTop: "45%"}}>
-                <table className="table table-hover h-50 w-75">
+            <div className="bg-dark w-100 vh-100 d-flex flex-column align-items-center overflow-y-scroll"
+                 style={{paddingTop: "8%"}}>
+                <table className="table table-hover w-75">
                     <thead>
                         <tr>
                             {users && Object.keys(users[0]).map((k) => {

@@ -23,7 +23,7 @@ const Login = () => {
         });
         if (response.status === 200){
             localStorage.setItem("auth_token", response.data.access_token);
-            return navigate("/");
+            return navigate(-1);
         }
         else {
             const errorMessage = document.getElementById("errorMessage");
@@ -60,6 +60,7 @@ const Login = () => {
                     <div className="m-0">
                         <p id="errorMessage" className={"text-danger text-center invisible p-0 m-0"}>Error message</p>
                     </div>
+                    <a href="/" className="text-center">continue as guest?</a>
                 </form>
             </div>
         </div>

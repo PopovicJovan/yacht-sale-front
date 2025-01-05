@@ -22,7 +22,6 @@ const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
 
-
         const response = await ApiService.post("/auth/register", form);
         if (response.status === 200) return navigate("/login");
         else{
@@ -35,7 +34,8 @@ const Register = () => {
     return (
         <div className="vh-100 w-full d-flex justify-content-center align-items-center">
             <div className="w-25 h-50 rounded-5 border border-primary d-flex justify-content-center align-items-center">
-                <form className="w-100 h-100 d-flex  flex-column justify-content-around px-5 py-4" onSubmit={handleRegister}>
+                <form className="w-100 h-100 d-flex  flex-column justify-content-around px-5 py-4"
+                      onSubmit={handleRegister}>
                     <div className="form-group">
                         <label>Username</label>
                         <input required type="text" className="form-control" name="username"
@@ -65,6 +65,7 @@ const Register = () => {
                     <div className="m-0">
                         <p id="errorMessage" className={"text-danger text-center invisible p-0 m-0"}>Error message</p>
                     </div>
+                    <a href="/" className="text-center">continue as guest?</a>
                 </form>
             </div>
         </div>

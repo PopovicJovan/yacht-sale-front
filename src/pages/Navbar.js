@@ -19,13 +19,13 @@ const Navbar = ({myClass}) => {
             <div id="auth-buttons" className="d-flex align-items-center justify-content-center w-25">
                 {localStorage.getItem("auth_token") ?
                     <>
-                    <Button variant="primary" className="h-50 w-50 px-2 py-2 mx-1" href="/me">Profile</Button>
+                    <Button variant="primary" className="h-50 w-50 px-2 py-2 mx-1" onClick={() => navigate("/me")}>Profile</Button>
                     <Button variant="primary" className="h-50 w-50 px-2 py-2 mx-1" onClick={handleLogout}>Logout</Button>
                     </>
                     :
                     <>
-                        <Button href="/login" variant="primary" className="h-50 w-50 px-2 py-2 mx-1">Login</Button>
-                        <Button href="/register" variant="primary" className="h-50 w-50 px-2 py-2 mx-1">Register</Button>
+                        <Button onClick={() => navigate("/login")} variant="primary" className="h-50 w-50 px-2 py-2 mx-1">Login</Button>
+                        <Button onClick={() => navigate("/register")} variant="primary" className="h-50 w-50 px-2 py-2 mx-1">Register</Button>
                     </>
                 }
             </div>
