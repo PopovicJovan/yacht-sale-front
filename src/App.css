@@ -91,6 +91,15 @@ footer{
   }
 }
 
+@media (max-width: 992px) {
+  .nav-lg{
+    padding: 0;
+    padding-right: 2%;
+  }
+}
+
+
+
 
 /*@media (min-width: 768px) {*/
 /*  .email-input-footer{*/
