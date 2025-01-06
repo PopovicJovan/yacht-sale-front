@@ -1,6 +1,6 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "@fontsource/poppins";
-nav{
+.nav-lg{
   height: 13%;
   width: 100%;
   display: flex;
@@ -13,6 +13,25 @@ nav{
   backdrop-filter: blur(500px);
   z-index: 1000;
 }
+
+.nav-sm{
+  height: 13%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-list{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
 
 .main-bg{
   height: 100vh;
@@ -33,7 +52,6 @@ nav{
 footer{
   margin: 0;
   padding: 0;
-  height: 40vh;
   width: 100%;
   background-color: #1ebeff;
   position: relative;
@@ -43,6 +61,46 @@ footer{
   justify-content: center;
   align-items: center;
 }
+.email-input-footer{
+  /*width: 50%;*/
+  display: flex;
+  justify-content: end;
+}
+.email-input-footer>input{
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .email-input-footer > input {
+    width: 100%;
+  }
+
+  .email-input-footer > button {
+    margin-top: 0.2rem;
+    align-self: center;
+  }
+
+  #news-letters > div {
+    width: 100% !important;
+  }
+
+  .email-input-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+/*@media (min-width: 768px) {*/
+/*  .email-input-footer{*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*  }*/
+/*}*/
+
+
 
 .filter-div{
   width: 100%;
@@ -53,9 +111,9 @@ footer{
 }
 
 .model-list{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .model-list>ul{
@@ -72,3 +130,4 @@ footer{
   border-inline-end: 0;
   background-color: white !important;
 }
+
