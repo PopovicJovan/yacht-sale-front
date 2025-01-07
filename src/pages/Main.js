@@ -26,14 +26,16 @@ const Main = () => {
             <Navbar/>
             <div className="main-bg">
                 <div className="h-100 w-100 d-flex justify-content-flex align-items-start px-5">
-                    <div id="description" className="w-50 h-50 pt-5 d-flex flex-column justify-content-center">
-                        <h2 className="main-page-heading">Elegance on Water</h2>
-                        <h5 style={{color: "#800000", width: "80%"}}>
+                    <div id="description" className=" h-50 pt-5 d-flex flex-column justify-content-center">
+                        <p className="main-page-heading h3 p-0 m-0">Elegance on Water</p>
+                        <h5 style={{color: "#800000", width: "550px"}}>
                             Embark on a journey like no other with our exclusive fleet of yachts.
                             Each vessel is designed to offer unparalleled comfort and sophistication.
                             Discover the freedom of luxury on the open water.
                         </h5>
-                        <Button href="/yachts" className="w-50"><h5>View our yachts</h5></Button>
+                        <Button href="/yachts" className="w-50">
+                            <h5>View our yachts</h5>
+                        </Button>
                     </div>
                 </div>
             </div>

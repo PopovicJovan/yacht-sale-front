@@ -23,6 +23,7 @@
   position: fixed;
   top: 0;
   z-index: 1000;
+  backdrop-filter: blur(500px);
 }
 
 .nav-list{
@@ -89,6 +90,20 @@ footer{
     display: flex;
     flex-direction: column;
   }
+  .main-bg{
+    padding: 0;
+  }
+  #description{
+    width: 100% !important;
+    height: 100% !important;
+  }
+  #description>h5{
+    width: 100% !important;
+    text-align: justify;
+  }
+  #description>a{
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 992px) {
@@ -98,17 +113,31 @@ footer{
   }
 }
 
+@media (max-width: 720px) {
+  #description>p{
+    font-size: 3.2rem !important;
+  }
+}
+.card-width{
+  width: 30%;
+}
 
+@media (max-width: 720px) {
+  .card-width{
+    width: 100%;
+  }
+}
+@media (840px < width <= 1200px) {
+  .card-width{
+    width: 48%;
+  }
+}
 
-
-/*@media (min-width: 768px) {*/
-/*  .email-input-footer{*/
-/*    width: 100%;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*  }*/
-/*}*/
-
+@media (720px < width <= 840px) {
+  .card-width{
+    width: 65%;
+  }
+}
 
 
 .filter-div{

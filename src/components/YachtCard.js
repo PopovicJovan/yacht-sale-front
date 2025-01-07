@@ -188,7 +188,7 @@ const YachtCard = ({ yacht, showUpdate = false, showCancel = false, startDateOpt
                 </div>
             )}
 
-            <Card style={{ width: "30%" }} className="my-2">
+            <Card className="my-2 card-width">
                 <Card.Img variant="top" src={yacht.picture ?? "/Images/no-img.jpg"} style={{ height: "40vh" }} className="img-fluid" />
                 <Card.Body>
                     <Card.Title>{yacht.name}</Card.Title>
