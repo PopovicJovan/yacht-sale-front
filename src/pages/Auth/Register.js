@@ -33,8 +33,8 @@ const Register = () => {
 
     return (
         <div className="vh-100 w-full d-flex justify-content-center align-items-center">
-            <div className="w-25 h-50 rounded-5 border border-primary d-flex justify-content-center align-items-center">
-                <form className="w-100 h-100 d-flex  flex-column justify-content-around px-5 py-4"
+            <div className="w-25 rounded-5 border border-primary d-flex justify-content-center align-items-center" id="register-form-parent">
+                <form className="w-100 h-100 d-flex  flex-column justify-content-around px-5 py-3"
                       onSubmit={handleRegister}>
                     <div className="form-group">
                         <label>Username</label>

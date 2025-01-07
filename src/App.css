@@ -70,6 +70,31 @@ footer{
 .email-input-footer>input{
   width: 50%;
 }
+@media (max-width: 567px) {
+  #login-form-parent{
+    width: 90% !important;
+  }
+  #login-form-parent>form{
+    width: 90% !important;
+  }
+
+  #register-form-parent{
+    width: 98% !important;
+  }
+  #register-form-parent>form{
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 567px) {
+  #register-form-parent{
+    width: 500px !important;
+  }
+  #login-form-parent{
+    width: 500px !important;
+  }
+}
+
 
 @media (max-width: 768px) {
   .email-input-footer > input {
